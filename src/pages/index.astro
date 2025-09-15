@@ -10,33 +10,43 @@ import Outro from "../components/organisms/Outro.astro";
 import Footer from "../components/organisms/Footer.astro";
 ---
 
-<Layout title="Home">
+<Layout title="Inicio | Fressia Perfumería">
   <Hero>
     <div class="hero flex justify-center lg:justify-start pt-36">
       <div class="flex flex-col items-center lg:items-start gap-4">
-        <Text type="body" color={colors.dimWhite}>NEW PRODUCT</Text>
+        <Text type="body" color={colors.dimWhite}>NUEVA COLECCIÓN</Text>
+
         <div class="w-[396px]">
           <Text
             className="text-center lg:text-left"
             type="h1"
             color={colors.white}
           >
-            XX99 Mark II Headphones
+            Fressia Perfumería &amp; Accesorios
           </Text>
         </div>
+
         <div class="w-[349px]">
           <Text
             className="text-center lg:text-left"
             type="body"
             color={colors.white}
           >
-            Experience natural, lifelike audio and exceptional build quality
-            made for the passionate music enthusiast.
+            Fragancias que se sienten — precios que enamoran. Réplicas 1.1, perfumes por onzas y colecciones árabes.
           </Text>
         </div>
-        <a href="/products/xx99-mark-two-headphones"
-          ><Button className="mt-8" type="primary">SEE PRODUCT</Button></a
-        >
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <!-- CTA principal: Catálogo Kyte -->
+          <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener">
+            <Button className="mt-2 sm:mt-0" type="primary">VER CATÁLOGO</Button>
+          </a>
+
+          <!-- CTA secundario: WhatsApp -->
+          <a href="https://wa.me/message/ES7WVJHY4MUYB1" target="_blank" rel="noopener">
+            <Button className="mt-2 sm:mt-0" type="secondary">PEDIR POR WHATSAPP</Button>
+          </a>
+        </div>
       </div>
     </div>
   </Hero>
@@ -55,6 +65,7 @@ import Footer from "../components/organisms/Footer.astro";
 </Layout>
 
 <style>
+  /* Cambia estas rutas por tu imagen hero si quieres (por ejemplo /hero-bottle.jpg en /public) */
   .hero {
     background-image: url("/assets/home/tablet/image-header.jpg");
     min-height: 700px;
@@ -65,20 +76,4 @@ import Footer from "../components/organisms/Footer.astro";
   @media only screen and (min-width: 1024px) {
     .hero {
       background-image: url("/assets/home/desktop/image-hero.jpg");
-      background-position-y: 50px;
-      background-position-x: 150px;
-    }
-  }
-  @media only screen and (min-width: 1280px) {
-    .hero {
-      background-position-y: -20px;
-      background-position-x: 120px;
-    }
-  }
-  @media only screen and (min-width: 1536px) {
-    .hero {
-      background-position-y: -80px;
-      background-position-x: 260px;
-    }
-  }
-</style>
+      background-position-y: 50p

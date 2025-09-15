@@ -65,7 +65,7 @@ import Footer from "../components/organisms/Footer.astro";
 </Layout>
 
 <style>
-  /* Cambia estas rutas por tu imagen hero si quieres (por ejemplo /hero-bottle.jpg en /public) */
+  /* Puedes cambiar estas rutas por tu propia imagen en /public si quieres */
   .hero {
     background-image: url("/assets/home/tablet/image-header.jpg");
     min-height: 700px;
@@ -73,7 +73,26 @@ import Footer from "../components/organisms/Footer.astro";
     background-position: center;
     background-repeat: no-repeat;
   }
+
   @media only screen and (min-width: 1024px) {
     .hero {
       background-image: url("/assets/home/desktop/image-hero.jpg");
-      background-position-y: 50p
+      background-position-y: 50px;   /* ← corregido: px */
+      background-position-x: 150px;
+    }
+  }
+
+  @media only screen and (min-width: 1280px) {
+    .hero {
+      background-position-y: -20px;
+      background-position-x: 120px;
+    }
+  }
+
+  @media only screen and (min-width: 1536px) {
+    .hero {
+      background-position-y: -80px;
+      background-position-x: 260px;
+    }
+  }
+</style>

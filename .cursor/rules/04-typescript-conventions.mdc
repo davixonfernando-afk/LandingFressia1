@@ -1,0 +1,304 @@
+---
+globs: *.ts,*.tsx,*.astro,*.js
+description: "TypeScript usage, file conventions, and code standards"
+---
+
+# TypeScript & Code Conventions
+
+## 📋 TypeScript Configuration
+
+### Project Setup
+- **Config**: [tsconfig.json](mdc:tsconfig.json) - Astro's recommended TypeScript settings
+- **Environment**: [src/env.d.ts](mdc:src/env.d.ts) - Astro environment types
+- **Build**: Type checking integrated with Astro build process
+
+### TypeScript in Astro Components
+```astro
+---
+// Always define interfaces for component props
+interface Props {
+  title: string;
+  description?: string;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  className?: string;
+  onClick?: () => void;
+}
+
+// Use destructuring with default values and type inference
+const { 
+  title, 
+  description, 
+  variant = 'primary', 
+  className = '',
+  onClick 
+} = Astro.props;
+---
+```
+
+## 📁 File Naming Conventions
+
+### Component Files
+- **Astro Components**: `PascalCase.astro` (e.g., `Button.astro`, `FeaturedProductCard.astro`)
+- **TypeScript Utilities**: `camelCase.ts` (e.g., `dummyData.js`, `global.js`)
+- **Pages**: `kebab-case.astro` (e.g., `index.astro`, `checkout.astro`)
+- **Dynamic Routes**: `[slug].astro` for dynamic routing
+
+### Directory Structure
+```
+src/
+├── components/
+│   ├── atoms/           # PascalCase.astro
+│   ├── molecules/       # PascalCase.astro  
+│   └── organisms/       # PascalCase.astro
+├── design-system/       # camelCase.js
+├── pages/              # kebab-case.astro, [slug].astro
+└── utils/              # camelCase.js
+```
+
+## 🏷️ Type Definitions
+
+### Product Data Types
+Based on [src/utils/dummyData.js](mdc:src/utils/dummyData.js):
+```typescript
+interface ProductImage {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+interface ProductInclude {
+  quantity: number;
+  item: string;
+}
+
+interface ProductOther {
+  slug: string;
+  name: string;
+  image: ProductImage;
+}
+
+interface Product {
+  id: number;
+  slug: string;
+  name: string;
+  image: ProductImage;
+  category: 'headphones' | 'speakers' | 'earphones';
+  categoryImage: ProductImage;
+  new: boolean;
+  price: number;
+  description: string;
+  features: string;
+  includes: ProductInclude[];
+  gallery: {
+    first: ProductImage;
+    second: ProductImage;
+    third: ProductImage;
+  };
+  others: ProductOther[];
+}
+```
+
+### Component Prop Patterns
+```typescript
+// Button component props
+interface ButtonProps {
+  type?: 'primary' | 'secondary' | 'secondary-inverted' | 'tertiary';
+  className?: string;
+  width?: string;
+  onClick?: string; // HTML onclick attribute
+  id?: string;
+}
+
+// Text component props
+interface TextProps {
+  type?: 'h1' | 'h2' | 'h3' | 'body' | 'caption';
+  color?: string;
+  className?: string;
+}
+
+// Layout props
+interface LayoutProps {
+  title: string;
+}
+```
+
+### Design System Types
+```typescript
+// Color system
+interface ColorPalette {
+  white: string;
+  dimWhite: string;
+  primary: string;
+}
+
+// Fressia theme colors
+interface FressiaColors {
+  bg: string;
+  panel: string;
+  edge: string;
+  text: string;
+  muted: string;
+  gold: string;
+  gold2: string;
+}
+```
+
+## 🔧 Code Standards
+
+### Import Organization
+```typescript
+// 1. Astro/Framework imports
+import Layout from '../layouts/Layout.astro';
+
+// 2. Component imports (grouped by type)
+import Hero from '../components/organisms/Hero.astro';
+import Button from '../components/atoms/Button.astro';
+import Text from '../components/atoms/Text.astro';
+
+// 3. Design system imports
+import { colors } from '../design-system/colors.js';
+import { typography } from '../design-system/typography.js';
+
+// 4. Utility/Data imports
+import { data } from '../utils/dummyData.js';
+```
+
+### Variable Naming
+```typescript
+// Use descriptive names
+const productData = data.find(item => item.slug === slug);
+const isNewProduct = product.new;
+const categoryImage = product.categoryImage.desktop;
+
+// Boolean prefixes
+const isVisible = true;
+const hasError = false;
+const shouldRender = condition;
+
+// Constants in UPPER_CASE
+const API_ENDPOINT = 'https://api.example.com';
+const MAX_PRODUCTS = 6;
+```
+
+### Function Patterns
+```typescript
+// Arrow functions for simple operations
+const getProductBySlug = (slug: string) => 
+  data.find(product => product.slug === slug);
+
+// Regular functions for complex logic
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(price);
+}
+
+// Async functions when needed
+async function fetchProductData(slug: string): Promise<Product | null> {
+  // Implementation
+}
+```
+
+## 📄 File Structure Patterns
+
+### Page Components
+```astro
+---
+// 1. Imports
+import Layout from '../layouts/Layout.astro';
+import ComponentName from '../components/...';
+
+// 2. Data fetching/processing
+const products = data.filter(product => product.category === 'headphones');
+
+// 3. Props interface (if needed)
+interface Props {
+  // Define props if this is a reusable component
+}
+---
+
+<!-- 4. Template -->
+<Layout title="Page Title">
+  <!-- Content -->
+</Layout>
+
+<!-- 5. Scoped styles -->
+<style>
+  /* Component-specific styles */
+</style>
+```
+
+### Utility Files
+```typescript
+// Export individual functions
+export const formatCurrency = (amount: number): string => {
+  // Implementation
+};
+
+export const slugify = (text: string): string => {
+  // Implementation
+};
+
+// Export data structures
+export const productCategories = ['headphones', 'speakers', 'earphones'] as const;
+export type ProductCategory = typeof productCategories[number];
+```
+
+## 🚨 Error Handling
+
+### Type Safety Patterns
+```typescript
+// Use optional chaining
+const productImage = product?.image?.desktop;
+
+// Provide fallbacks
+const title = product?.name ?? 'Unknown Product';
+
+// Type guards
+function isValidProduct(item: any): item is Product {
+  return item && 
+         typeof item.id === 'number' && 
+         typeof item.slug === 'string' &&
+         typeof item.name === 'string';
+}
+```
+
+### Null/Undefined Handling
+```astro
+---
+const product = data.find(item => item.slug === Astro.params.slug);
+
+// Handle missing data
+if (!product) {
+  return Astro.redirect('/404');
+}
+---
+```
+
+## 🎯 Best Practices
+
+### Component Props
+1. **Always define interfaces** for component props
+2. **Use optional properties** with `?` for non-required props
+3. **Provide default values** in destructuring
+4. **Support className override** for styling flexibility
+5. **Use union types** for variant props
+
+### Data Handling
+1. **Type product data** based on actual structure
+2. **Use type guards** for runtime validation
+3. **Handle missing data** gracefully
+4. **Prefer immutable operations** when manipulating data
+
+### Import/Export
+1. **Use named exports** for utilities and constants
+2. **Default exports** for components
+3. **Organize imports** by source type
+4. **Avoid deep import paths** when possible
+
+### Performance
+1. **Minimize client-side JavaScript** - leverage Astro's static generation
+2. **Use TypeScript for development** but ship minimal JS
+3. **Type checking at build time** prevents runtime errors
+4. **Leverage Astro's partial hydration** when interactivity is needed

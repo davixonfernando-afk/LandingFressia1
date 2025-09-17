@@ -1,0 +1,234 @@
+---
+globs: *.astro,*.js,tailwind.config.cjs
+description: "Design system, Tailwind CSS, and brand styling guidelines"
+---
+
+# Design System & Styling Guide
+
+## 🎨 Fressia Brand Identity
+
+### Color Palette
+Primary brand colors defined in [tailwind.config.cjs](mdc:tailwind.config.cjs):
+
+```css
+fressia: {
+  bg:    '#0c0c0f', // Main background - dark theme
+  panel: '#111117', // Cards/panels - slightly lighter
+  edge:  '#23232c', // Subtle borders
+  text:  '#efeff4', // Primary text - light
+  muted: '#a8a8b3', // Secondary text - muted
+  gold:  '#d4af37', // Brand gold - primary accent
+  gold2: '#a88928', // Dark gold - hover/gradients
+}
+```
+
+### Legacy Color System
+Located in [src/design-system/colors.js](mdc:src/design-system/colors.js):
+```javascript
+export const colors = {
+  white: "#fff",
+  dimWhite: "rgba(255, 255, 255, 0.5)",
+  primary: "#d87d4a", // Orange accent (legacy)
+};
+```
+
+### CSS Custom Properties
+Global variables in [Layout.astro](mdc:src/layouts/Layout.astro):
+```css
+:root {
+  --primary: #d87d4a;
+  --dark: #101010;
+  --evening: #0e0e0e;
+  --night: #000;
+  --gray: #f1f1f1;
+  --off-white: #fafafa;
+  --white: #fff;
+  --dim-white: rgb(255, 255, 255, 0.5);
+  --primary-light: #fbaf85;
+}
+```
+
+## 🖌️ Tailwind Configuration
+
+### Custom Extensions
+```javascript
+theme: {
+  container: {
+    center: true,
+    padding: { DEFAULT: '1rem', md: '1.5rem' },
+  },
+  extend: {
+    boxShadow: {
+      brand: '0 20px 60px rgba(0,0,0,.55)',
+    },
+    borderRadius: {
+      xl: '1rem',
+      '2xl': '1.25rem',
+    },
+  },
+}
+```
+
+### Content Scanning
+```javascript
+content: [
+  './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
+  './public/**/*.html',
+]
+```
+
+## 🎯 Color Usage Guidelines
+
+### Primary Color Hierarchy
+1. **Background**: `fressia-bg` (#0c0c0f) - Main page background
+2. **Panels**: `fressia-panel` (#111117) - Cards, modals, sections
+3. **Borders**: `fressia-edge` (#23232c) - Subtle dividers
+4. **Text**: `fressia-text` (#efeff4) - Primary content
+5. **Muted**: `fressia-muted` (#a8a8b3) - Secondary content
+6. **Accent**: `fressia-gold` (#d4af37) - CTAs, highlights
+7. **Accent Dark**: `fressia-gold2` (#a88928) - Hover states
+
+### Color Application Examples
+```astro
+<!-- Background sections -->
+<section class="bg-fressia-bg text-fressia-text">
+
+<!-- Cards and panels -->
+<div class="bg-fressia-panel border border-fressia-edge">
+
+<!-- Primary CTAs -->
+<button class="bg-fressia-gold hover:bg-fressia-gold2">
+
+<!-- Secondary text -->
+<p class="text-fressia-muted">
+```
+
+## 📐 Typography System
+
+### Font Stack
+- **Primary**: Manrope (from component styles)
+- **Fallback**: System font stack for performance
+
+### Typography Tokens
+Located in [src/design-system/typography.js](mdc:src/design-system/typography.js):
+- Define consistent font sizes, weights, and line heights
+- Use with Text component for consistency
+
+### Text Component Usage
+```astro
+<Text type="h1" color={colors.white}>Main Heading</Text>
+<Text type="body" color={colors.dimWhite}>Body text</Text>
+```
+
+## 🔧 Component Styling Patterns
+
+### Button Variants
+Reference [Button.astro](mdc:src/components/atoms/Button.astro):
+- `primary`: Gold background, white text
+- `secondary`: Transparent with border
+- `secondary-inverted`: Dark background, white text
+- `tertiary`: Text-only with opacity
+
+### Responsive Design
+```css
+/* Mobile-first approach */
+.component {
+  /* Mobile styles */
+}
+
+@media only screen and (min-width: 1024px) {
+  .component {
+    /* Desktop styles */
+  }
+}
+```
+
+### Layout Patterns
+```css
+/* Product item rows */
+.product-item-row {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 34px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .product-item-row {
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+  }
+  
+  .product-item-row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+```
+
+## 🎨 Custom Styling Guidelines
+
+### Scoped vs Global Styles
+- **Scoped**: Use `<style>` in components for component-specific styles
+- **Global**: Use Layout.astro for site-wide styles and resets
+- **Utility**: Prefer Tailwind classes for spacing, layout, and common patterns
+
+### CSS Custom Properties in Components
+```astro
+<style define:vars={{ width: width || "10rem", color: colors.primary }}>
+  .button {
+    width: var(--width);
+    background: var(--color);
+  }
+</style>
+```
+
+### Shadow and Effects
+```css
+/* Brand shadow */
+box-shadow: var(--shadow-brand); /* 0 20px 60px rgba(0,0,0,.55) */
+
+/* Rounded corners */
+border-radius: theme('borderRadius.xl'); /* 1rem */
+border-radius: theme('borderRadius.2xl'); /* 1.25rem */
+```
+
+## 📱 Responsive Breakpoints
+
+### Tailwind Breakpoints
+- `sm`: 640px and up
+- `md`: 768px and up  
+- `lg`: 1024px and up
+- `xl`: 1280px and up
+- `2xl`: 1536px and up
+
+### Custom Media Queries
+```css
+/* Tablet */
+@media only screen and (min-width: 960px) {
+  .container { width: 1440px; }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+  /* Desktop-specific styles */
+}
+```
+
+## 🚀 Performance Optimization
+
+### CSS Loading Strategy
+- Critical CSS inlined in Layout.astro
+- Component styles scoped and automatically optimized
+- Tailwind purges unused classes in production
+
+### Color Token Usage
+- Use design system tokens consistently
+- Avoid hardcoded color values
+- Leverage CSS custom properties for dynamic theming
+
+### Best Practices
+1. **Mobile-first**: Design for mobile, enhance for desktop
+2. **Consistent spacing**: Use Tailwind spacing scale
+3. **Accessible colors**: Ensure sufficient contrast ratios
+4. **Performance**: Minimize custom CSS, leverage Tailwind utilities
+5. **Maintainability**: Use design tokens, avoid magic numbers

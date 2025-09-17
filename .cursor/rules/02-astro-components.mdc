@@ -1,0 +1,159 @@
+---
+globs: *.astro
+description: "Astro component development standards and patterns"
+---
+
+# Astro Components Development Guide
+
+## 🧩 Component Architecture
+
+### Atomic Design Hierarchy
+1. **Atoms** (`src/components/atoms/`): Basic UI elements
+   - [Button.astro](mdc:src/components/atoms/Button.astro) - Primary, secondary, tertiary variants
+   - [Text.astro](mdc:src/components/atoms/Text.astro) - Typography component
+   - [Input.astro](mdc:src/components/atoms/Input.astro) - Form inputs
+   - [Container.astro](mdc:src/components/atoms/Container.astro) - Layout wrapper
+
+2. **Molecules** (`src/components/molecules/`): Composed components
+   - [Modal.astro](mdc:src/components/molecules/Modal.astro) - Dialog overlays
+   - [NavLinks.astro](mdc:src/components/molecules/NavLinks.astro) - Navigation items
+   - [FeaturedProductCard.astro](mdc:src/components/molecules/FeaturedProductCard.astro) - Product cards
+
+3. **Organisms** (`src/components/organisms/`): Complex sections
+   - [Hero.astro](mdc:src/components/organisms/Hero.astro) - Landing hero section
+   - [Navbar.astro](mdc:src/components/organisms/Navbar.astro) - Site navigation
+   - [Footer.astro](mdc:src/components/organisms/Footer.astro) - Site footer
+
+## 📝 Component Patterns
+
+### Standard Astro Component Structure
+```astro
+---
+// 1. TypeScript interface for props
+interface Props {
+  title: string;
+  className?: string;
+  variant?: 'primary' | 'secondary';
+}
+
+// 2. Destructure props
+const { title, className, variant = 'primary' } = Astro.props;
+
+// 3. Import design system tokens
+import { colors } from '../design-system/colors.js';
+---
+
+<!-- 4. HTML template with slots -->
+<div class={`component-base ${className}`}>
+  <h2>{title}</h2>
+  <slot />
+</div>
+
+<!-- 5. Scoped styles with CSS variables -->
+<style define:vars={{ primaryColor: colors.primary }}>
+  .component-base {
+    color: var(--primaryColor);
+  }
+</style>
+```
+
+### Props Best Practices
+- Always define TypeScript interfaces for props
+- Use destructuring with default values
+- Support `className` prop for Tailwind overrides
+- Use optional props with `?` for flexibility
+
+### Button Component Pattern
+Reference [Button.astro](mdc:src/components/atoms/Button.astro) for:
+- Multiple variants: `primary`, `secondary`, `secondary-inverted`, `tertiary`
+- Dynamic width via CSS custom properties
+- Hover states and transitions
+- Proper accessibility attributes
+
+### Responsive Image Handling
+```astro
+---
+interface ImageProps {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+  alt: string;
+}
+---
+
+<picture>
+  <source media="(min-width: 1024px)" srcset={desktop}>
+  <source media="(min-width: 768px)" srcset={tablet}>
+  <img src={mobile} alt={alt} />
+</picture>
+```
+
+## 🎨 Styling Guidelines
+
+### Tailwind Integration
+- Use Tailwind classes for layout and spacing
+- Leverage custom Fressia color palette: `fressia-bg`, `fressia-gold`, etc.
+- Use responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`
+
+### Scoped Styles
+- Use `<style>` blocks for component-specific styles
+- Leverage `define:vars` for dynamic CSS custom properties
+- Avoid global styles unless absolutely necessary
+
+### CSS Custom Properties Pattern
+```astro
+<style define:vars={{ 
+  width: width || "10rem",
+  bgColor: colors.primary 
+}}>
+  .component {
+    width: var(--width);
+    background: var(--bgColor);
+  }
+</style>
+```
+
+## 🔄 Component Composition
+
+### Slot Usage
+- Use `<slot />` for content projection
+- Named slots for complex layouts: `<slot name="header" />`
+- Default slot content as fallback
+
+### Event Handling
+- Use `onclick` attribute for simple interactions
+- Pass event handlers via props when needed
+- Consider client-side hydration for complex interactions
+
+### Import Patterns
+```astro
+---
+// Design system imports
+import { colors } from '../design-system/colors.js';
+import { typography } from '../design-system/typography.js';
+
+// Component imports
+import Button from './atoms/Button.astro';
+import Text from './atoms/Text.astro';
+
+// Data imports
+import { data } from '../utils/dummyData.js';
+---
+```
+
+## 🚀 Performance Considerations
+
+### Image Optimization
+- Use appropriate image formats (WebP, AVIF when possible)
+- Implement responsive images with `<picture>` element
+- Consider lazy loading for below-the-fold content
+
+### Component Loading
+- Astro components are zero-JS by default
+- Add `client:` directives only when interactivity is needed
+- Use `client:load`, `client:idle`, `client:visible` appropriately
+
+### Bundle Optimization
+- Import only what you need from design system
+- Use tree-shaking friendly imports
+- Avoid large external dependencies in components

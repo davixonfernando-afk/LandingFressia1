@@ -1,0 +1,71 @@
+---
+alwaysApply: true
+description: "Project structure and architecture guidelines for Fressia Perfumería landing page"
+---
+
+# Fressia Perfumería - Project Structure Guide
+
+This is an **Astro-based landing page** for Fressia Perfumería & Accesorios, featuring a modern e-commerce design with Tailwind CSS.
+
+## 🏗️ Architecture Overview
+
+### Core Structure
+- **Framework**: Astro 3.x with Tailwind CSS integration
+- **Styling**: Tailwind CSS with custom Fressia brand colors
+- **Components**: Atomic Design Pattern (atoms → molecules → organisms)
+- **Content**: Static pages with dynamic product routing via `[slug].astro`
+
+### Key Entry Points
+- Main page: [src/pages/index.astro](mdc:src/pages/index.astro)
+- Layout wrapper: [src/layouts/Layout.astro](mdc:src/layouts/Layout.astro)
+- Product data: [src/utils/dummyData.js](mdc:src/utils/dummyData.js)
+- Brand colors: [src/design-system/colors.js](mdc:src/design-system/colors.js)
+
+### Directory Structure
+```
+src/
+├── components/
+│   ├── atoms/          # Basic UI elements (Button, Text, Input)
+│   ├── molecules/      # Composed components (Modal, NavLinks)
+│   └── organisms/      # Complex sections (Hero, Footer, Navbar)
+├── design-system/      # Brand tokens and design constants
+├── layouts/           # Page layouts and templates
+├── pages/             # Astro pages and routing
+└── utils/             # Helper functions and data
+```
+
+## 🎯 Business Context
+
+**Fressia Perfumería** sells:
+- Perfume replicas (1:1 quality)
+- Perfumes by ounce
+- Arabic fragrance collections
+- Related accessories
+
+**Key CTAs**:
+- Primary: Kyte catalog → `https://fressia-perfumeria.kyte.site/es`
+- Secondary: WhatsApp orders → `https://wa.me/message/ES7WVJHY4MUYB1`
+
+## 📱 Responsive Design
+- Mobile-first approach
+- Tablet and desktop breakpoints
+- Image assets organized by device type in `/public/assets/`
+
+## 🔧 Development Guidelines
+
+### When Creating New Components
+1. Follow atomic design principles
+2. Use Astro component syntax with frontmatter
+3. Leverage design system tokens from `colors.js`, `typography.js`, `sizing.js`
+4. Ensure responsive behavior with Tailwind classes
+
+### When Adding New Pages
+1. Create in `src/pages/` directory
+2. Use Layout wrapper for consistency
+3. Follow existing naming conventions
+4. Consider SEO and meta tags
+
+### Asset Management
+- Product images: `/public/assets/product-[name]/[device]/`
+- Shared assets: `/public/assets/shared/[device]/`
+- Icons and branding: `/public/assets/shared/desktop/`

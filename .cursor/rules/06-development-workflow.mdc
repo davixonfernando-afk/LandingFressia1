@@ -1,0 +1,216 @@
+---
+alwaysApply: true
+description: "Development workflow, best practices, and project guidelines"
+---
+
+# Development Workflow & Best Practices
+
+## 🚀 Project Overview
+
+**Fressia Perfumería** is a modern e-commerce landing page built with:
+- **Astro 3.x** - Static site generation with component islands
+- **Tailwind CSS** - Utility-first CSS framework
+- **TypeScript** - Type safety and developer experience
+- **Atomic Design** - Scalable component architecture
+
+## 🛠️ Development Commands
+
+### Core Scripts
+```bash
+npm install      # Instalacion de dependencias
+npm run dev      # Development server with hot reload
+npm run build    # Production build
+npm run preview  # Preview production build locally
+npm run astro    # Astro CLI commands
+```
+
+### Development Workflow
+1. **Start Development**: `npm run dev`
+2. **Make Changes**: Edit components, pages, or styles
+3. **Test Locally**: Verify changes in browser
+4. **Build & Preview**: `npm run build && npm run preview`
+5. **Deploy**: Push to production
+
+## 🎯 Business Context & Goals
+
+### Target Audience
+- **Primary**: Colombian customers seeking quality fragrances
+- **Secondary**: Budget-conscious perfume enthusiasts
+- **Tertiary**: Collectors of Arabic fragrances
+
+### Key Products
+- **Replica Perfumes**: 1:1 quality reproductions
+- **Perfumes by Ounce**: Custom quantities
+- **Arabic Collections**: Premium Middle Eastern fragrances
+- **Accessories**: Perfume-related items
+
+### Conversion Goals
+1. **Primary CTA**: Drive traffic to Kyte catalog
+2. **Secondary CTA**: Generate WhatsApp inquiries
+3. **Tertiary**: Build brand awareness and trust
+
+## 📋 Development Guidelines
+
+### Before Starting Work
+1. **Understand the Brand**: Review existing content and styling
+2. **Check Dependencies**: Ensure all packages are up to date
+3. **Review Components**: Familiarize yourself with existing atomic design structure
+4. **Test Environment**: Verify development server runs correctly
+
+### Component Development
+1. **Follow Atomic Design**: atoms → molecules → organisms
+2. **Use TypeScript**: Define interfaces for all component props
+3. **Responsive First**: Design for mobile, enhance for desktop
+4. **Accessibility**: Include proper ARIA labels and semantic HTML
+5. **Performance**: Minimize JavaScript, leverage Astro's static generation
+
+### Styling Approach
+1. **Tailwind First**: Use utility classes for common patterns
+2. **Design System**: Reference brand colors and tokens
+3. **Scoped Styles**: Use component-level `<style>` blocks when needed
+4. **Responsive**: Mobile-first with progressive enhancement
+
+### Asset Management
+1. **Organized Structure**: Follow established `/public/assets/` hierarchy
+2. **Responsive Images**: Provide mobile/tablet/desktop variants
+3. **Optimization**: Compress images and use appropriate formats
+4. **Lazy Loading**: Implement for below-the-fold content
+
+## 🔍 Code Quality Standards
+
+### TypeScript Usage
+- Define interfaces for all component props
+- Use type guards for data validation
+- Leverage Astro's built-in TypeScript support
+- Handle null/undefined cases gracefully
+
+### Component Standards
+- Single responsibility principle
+- Reusable and composable design
+- Consistent prop naming conventions
+- Proper error boundaries and fallbacks
+
+### Performance Considerations
+- Minimal client-side JavaScript
+- Optimized images and assets
+- Efficient CSS delivery
+- Fast loading times on mobile networks
+
+## 🧪 Testing & Quality Assurance
+
+### Manual Testing Checklist
+- [ ] Responsive design works across devices
+- [ ] All CTAs link to correct destinations
+- [ ] Images load properly on all breakpoints
+- [ ] Typography is consistent and readable
+- [ ] Color contrast meets accessibility standards
+- [ ] Page loads quickly on slow connections
+
+### Browser Compatibility
+- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest 2 versions)
+- **Mobile**: iOS Safari, Chrome Mobile
+- **Fallbacks**: Ensure graceful degradation for older browsers
+
+### Accessibility Checklist
+- [ ] Semantic HTML structure
+- [ ] Proper heading hierarchy (h1, h2, h3...)
+- [ ] Alt text for all images
+- [ ] Keyboard navigation support
+- [ ] Color contrast ratios meet WCAG standards
+- [ ] Screen reader compatibility
+
+## 🔧 Common Development Tasks
+
+### Adding New Products
+1. Update [dummyData.js](mdc:src/utils/dummyData.js) with product information
+2. Add product images to `/public/assets/product-[slug]/`
+3. Ensure responsive image variants exist
+4. Test product page rendering with `[slug].astro`
+
+### Modifying Design System
+1. Update [tailwind.config.cjs](mdc:tailwind.config.cjs) for global changes
+2. Modify [colors.js](mdc:src/design-system/colors.js) for color tokens
+3. Test changes across all components
+4. Update component styles as needed
+
+### Creating New Pages
+1. Add `.astro` file to [src/pages/](mdc:src/pages/)
+2. Use [Layout.astro](mdc:src/layouts/Layout.astro) wrapper
+3. Follow existing page structure patterns
+4. Update navigation if needed
+
+### Component Modifications
+1. Maintain existing prop interfaces
+2. Test changes across all usage locations
+3. Update TypeScript types if needed
+4. Ensure backward compatibility
+
+## 🚨 Common Pitfalls & Solutions
+
+### Image Loading Issues
+- **Problem**: Images not displaying correctly
+- **Solution**: Check file paths and ensure responsive variants exist
+- **Prevention**: Use consistent naming conventions and verify assets
+
+### Styling Conflicts
+- **Problem**: Tailwind classes not applying
+- **Solution**: Check class specificity and purge configuration
+- **Prevention**: Use scoped styles for component-specific CSS
+
+### TypeScript Errors
+- **Problem**: Type mismatches in components
+- **Solution**: Define proper interfaces and use type guards
+- **Prevention**: Consistent prop typing across components
+
+### Performance Issues
+- **Problem**: Slow page loading
+- **Solution**: Optimize images, minimize CSS, reduce JavaScript
+- **Prevention**: Regular performance audits and optimization
+
+## 📊 Deployment & Production
+
+### Build Process
+1. **Type Check**: Ensure no TypeScript errors
+2. **Build**: Generate static files with `npm run build`
+3. **Test**: Preview build locally with `npm run preview`
+4. **Deploy**: Upload `dist/` folder to hosting provider
+
+### Production Checklist
+- [ ] All images optimized and compressed
+- [ ] External links working correctly
+- [ ] Contact forms and CTAs functional
+- [ ] SEO meta tags properly set
+- [ ] Analytics tracking implemented
+- [ ] Error pages (404) configured
+
+### Performance Monitoring
+- **Core Web Vitals**: Monitor LCP, FID, CLS scores
+- **Loading Speed**: Aim for < 3s load time on 3G
+- **Mobile Experience**: Ensure smooth mobile performance
+- **Conversion Tracking**: Monitor CTA click-through rates
+
+## 💡 Best Practices Summary
+
+### Code Organization
+1. **Consistent Structure**: Follow established patterns
+2. **Clear Naming**: Use descriptive component and variable names
+3. **Documentation**: Comment complex logic and business rules
+4. **Modularity**: Keep components focused and reusable
+
+### User Experience
+1. **Fast Loading**: Optimize for speed on all devices
+2. **Intuitive Navigation**: Clear paths to key actions
+3. **Accessible Design**: Inclusive for all users
+4. **Mobile First**: Ensure excellent mobile experience
+
+### Maintenance
+1. **Regular Updates**: Keep dependencies current
+2. **Code Reviews**: Maintain quality standards
+3. **Performance Audits**: Regular optimization checks
+4. **User Feedback**: Incorporate user experience improvements
+
+### Business Alignment
+1. **Brand Consistency**: Maintain Fressia's visual identity
+2. **Conversion Focus**: Optimize for business goals
+3. **Content Accuracy**: Keep product information current
+4. **Market Relevance**: Adapt to customer needs and trends

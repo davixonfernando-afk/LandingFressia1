@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Text from "../atoms/Text.astro";
 const {
   image,
@@ -11,7 +10,7 @@ const {
 ---
 
 <div class="product-card">
-  <Image class="item-image" src={image} alt={imageAlt} />
+  <img class="item-image" src={image} alt={imageAlt} width="400" height="400" />
   <Text type="h4">{title}</Text>
   <slot />
 </div>

@@ -4,21 +4,28 @@ import Hero from "../components/organisms/Hero.astro";
 import { colors } from "../design-system/colors.js";
 import Text from "../components/atoms/Text.astro";
 import Button from "../components/atoms/Button.astro";
-import FeaturedProducts from "../components/organisms/FeaturedProducts.astro";
-import ProductSpotlight from "../components/organisms/ProductSpotlight.astro";
-import Outro from "../components/organisms/Outro.astro";
 import Footer from "../components/organisms/Footer.astro";
 ---
 
 <Layout title="Inicio | Fressia Perfumería">
-  <Hero>
-    <div class="hero flex justify-center lg:justify-start pt-36">
-      <div class="flex flex-col items-center lg:items-start gap-4">
-        <Text type="body" color={colors.dimWhite}>NUEVA COLECCIÓN</Text>
-
-        <div class="w-[396px]">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+    </div>
+    
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <img src="/Logo-fressia.png" alt="Fressia Perfumería" class="logo" />
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-text">
+        <Text type="body" color={colors.white} className="hero-subtitle">Bienvenido a:</Text>
+        
+        <div class="hero-title">
           <Text
-            className="text-center lg:text-left"
+            className="text-center"
             type="h1"
             color={colors.white}
           >
@@ -26,73 +33,665 @@ import Footer from "../components/organisms/Footer.astro";
           </Text>
         </div>
 
-        <div class="w-[349px]">
+        <div class="hero-description">
           <Text
-            className="text-center lg:text-left"
+            className="text-center"
             type="body"
             color={colors.white}
           >
-            Fragancias que se sienten — precios que enamoran. Réplicas 1.1, perfumes por onzas y colecciones árabes.
+            Tu estilo, tu esencia, tu elegancia. Perfumes 1:1, joyería en oro laminado, gorras exclusivas, gafas de sol premium y camisetas deportivas. Calidad que se siente, precios que enamoran.
           </Text>
         </div>
 
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <!-- CTA principal: Catálogo Kyte -->
+        <div class="hero-buttons">
           <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener">
-            <Button className="mt-2 sm:mt-0" type="primary">VER CATÁLOGO</Button>
+            <Button className="primary-cta" type="primary">VER CATÁLOGO</Button>
           </a>
-
-          <!-- CTA secundario: WhatsApp -->
           <a href="https://wa.me/message/ES7WVJHY4MUYB1" target="_blank" rel="noopener">
-            <Button className="mt-2 sm:mt-0" type="secondary">PEDIR POR WHATSAPP</Button>
+            <button class="whatsapp-button">PEDIR POR WHATSAPP</button>
           </a>
         </div>
       </div>
     </div>
-  </Hero>
+  </section>
 
-  <!-- Featured products -->
-  <FeaturedProducts />
+  <!-- Product Categories Section -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <Text type="h2" color={colors.white} className="section-title">Nuestros Productos</Text>
+        <Text type="body" color={colors.dimWhite} className="section-subtitle">
+          Descubre nuestra amplia gama de productos de alta calidad
+        </Text>
+      </div>
+      
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-icon">🌸</div>
+          <h3>Perfumes 1:1</h3>
+          <p>Replicas de alta calidad de las mejores marcas</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">💎</div>
+          <h3>Joyería en Oro</h3>
+          <p>Oro laminado de 18k con diseños exclusivos</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">🧢</div>
+          <h3>Gorras Exclusivas</h3>
+          <p>Diseños únicos y limitados</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">🕶️</div>
+          <h3>Gafas de Sol</h3>
+          <p>Marcas premium con garantía</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">👕</div>
+          <h3>Camisetas Deportivas</h3>
+          <p>Ropa deportiva de alta calidad</p>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">🌿</div>
+          <h3>Fragancias Árabes</h3>
+          <p>Perfumes orientales auténticos</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- product spotlight section -->
-  <ProductSpotlight />
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <Text type="h2" color={colors.white} className="about-title">¿Por qué elegir Fressia?</Text>
+          <div class="about-features">
+            <div class="feature">
+              <div class="feature-icon">✨</div>
+              <div class="feature-text">
+                <h4>Calidad Premium</h4>
+                <p>Productos de la más alta calidad con garantía</p>
+              </div>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">💰</div>
+              <div class="feature-text">
+                <h4>Precios Accesibles</h4>
+                <p>Calidad premium a precios que enamoran</p>
+              </div>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">🚚</div>
+              <div class="feature-text">
+                <h4>Envío Rápido</h4>
+                <p>Entrega rápida y segura en toda Colombia</p>
+              </div>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">💬</div>
+              <div class="feature-text">
+                <h4>Atención Personalizada</h4>
+                <p>Asesoría personalizada por WhatsApp</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Outro section -->
-  <Outro />
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <Text type="h2" color={colors.white} className="section-title">Lo que dicen nuestros clientes</Text>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"Excelente calidad en los perfumes, exactamente como los originales. Muy recomendado!"</p>
+          </div>
+          <div class="testimonial-author">
+            <strong>María G.</strong>
+            <span>⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"La joyería es hermosa y la atención al cliente es excepcional. Volveré a comprar."</p>
+          </div>
+          <div class="testimonial-author">
+            <strong>Carlos M.</strong>
+            <span>⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"Entrega súper rápida y productos de muy buena calidad. 100% recomendado!"</p>
+          </div>
+          <div class="testimonial-author">
+            <strong>Ana L.</strong>
+            <span>⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <Text type="h2" color={colors.white} className="cta-title">¿Listo para descubrir tu estilo?</Text>
+        <Text type="body" color={colors.dimWhite} className="cta-subtitle">
+          Explora nuestro catálogo completo o contáctanos directamente
+        </Text>
+        
+        <div class="cta-buttons">
+          <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener">
+            <Button className="primary-cta" type="primary">VER CATÁLOGO COMPLETO</Button>
+          </a>
+          <a href="https://wa.me/message/ES7WVJHY4MUYB1" target="_blank" rel="noopener">
+            <button class="whatsapp-button">CONTACTAR POR WHATSAPP</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Embedded Catalog Section -->
+  <section class="catalog-section">
+    <div class="container">
+      <div class="section-header">
+        <Text type="h2" color={colors.white} className="section-title">Nuestro Catálogo</Text>
+        <Text type="body" color={colors.dimWhite} className="section-subtitle">
+          Explora todos nuestros productos disponibles
+        </Text>
+      </div>
+      
+      <div class="catalog-container">
+        <iframe 
+          src="https://fressia-perfumeria.kyte.site/es" 
+          width="100%" 
+          height="800px"
+          frameborder="0"
+          title="Catálogo Fressia Perfumería"
+          class="catalog-iframe"
+        ></iframe>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <Footer />
 </Layout>
 
 <style>
-  /* Puedes cambiar estas rutas por tu propia imagen en /public si quieres */
-  .hero {
-    background-image: url("/assets/home/tablet/image-header.jpg");
-    min-height: 700px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+  /* Global Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  @media only screen and (min-width: 1024px) {
-    .hero {
-      background-image: url("/assets/home/desktop/image-hero.jpg");
-      background-position-y: 50px;   /* ← corregido: px */
-      background-position-x: 150px;
+  html, body {
+    background-color: #000000 !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    overflow: hidden;
+  }
+
+  /* Logo Section */
+  .logo-section {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+
+  .logo {
+    width: 234px;
+    height: 234px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 4px 8px rgba(242, 169, 118, 0.3));
+    transition: all 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(242, 169, 118, 0.5));
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23f2a976" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23f2a976" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23f2a976" opacity="0.05"/><circle cx="10" cy="60" r="0.5" fill="%23f2a976" opacity="0.05"/><circle cx="90" cy="40" r="0.5" fill="%23f2a976" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(242, 169, 118, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    margin-top: 8.5rem;
+  }
+
+  .hero-subtitle {
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: #f2a976 !important;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title :global(.text-center) {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin: 1rem 0;
+  }
+
+  .hero-description :global(.text-center) {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1rem 0 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .primary-cta {
+    background-color: #f2a976 !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 1rem 2rem !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.0625rem !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-family: 'Montserrat', sans-serif !important;
+  }
+
+  .primary-cta:hover {
+    background-color: #d87d4a !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(242, 169, 118, 0.3) !important;
+  }
+
+  .whatsapp-button {
+    background-color: #25D366 !important;
+    color: white !important;
+    border: none !important;
+    padding: 1rem 2rem !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.0625rem !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-family: 'Montserrat', sans-serif !important;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #128C7E !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3) !important;
+  }
+
+  /* Categories Section */
+  .categories-section {
+    padding: 4rem 0;
+    background-color: #000000;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #ffffff !important;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .category-card {
+    background: #000000;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(242, 169, 118, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    border-color: #f2a976;
+    box-shadow: 0 10px 30px rgba(242, 169, 118, 0.2);
+  }
+
+  .category-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-card h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* About Section */
+  .about-section {
+    padding: 4rem 0;
+    background: #000000;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: #ffffff !important;
+    text-align: center;
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(242, 169, 118, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(242, 169, 118, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .feature-text h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-text p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    padding: 4rem 0;
+    background-color: #000000;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .testimonial-card {
+    background: #000000;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(242, 169, 118, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-3px);
+    border-color: #f2a976;
+    box-shadow: 0 8px 25px rgba(242, 169, 118, 0.15);
+  }
+
+  .testimonial-content p {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .testimonial-author strong {
+    color: #f2a976;
+    font-weight: 600;
+  }
+
+  .testimonial-author span {
+    color: #f2a976;
+    font-size: 1.1rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 4rem 0;
+    background: #000000;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #ffffff !important;
+  }
+
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  /* Catalog Section */
+  .catalog-section {
+    padding: 4rem 0;
+    background-color: #000000;
+  }
+
+  .catalog-container {
+    width: 100%;
+    min-height: 800px;
+    padding: 2rem 0;
+    background: #000000;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .catalog-iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Design */
+  @media only screen and (min-width: 768px) {
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: row;
+      justify-content: center;
+    }
+    
+    .hero-title :global(.text-center) {
+      font-size: 4rem;
     }
   }
 
-  @media only screen and (min-width: 1280px) {
-    .hero {
-      background-position-y: -20px;
-      background-position-x: 120px;
+  @media only screen and (max-width: 768px) {
+    .hero-title :global(.text-center) {
+      font-size: 2.5rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .about-features {
+      grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .catalog-container {
+      padding: 1rem;
+    }
+    
+    .catalog-iframe {
+      height: 600px;
     }
   }
 
-  @media only screen and (min-width: 1536px) {
-    .hero {
-      background-position-y: -80px;
-      background-position-x: 260px;
+  @media only screen and (max-width: 480px) {
+    .hero-title :global(.text-center) {
+      font-size: 2rem;
+    }
+    
+    .container {
+      padding: 0 0.5rem;
+    }
+    
+    .category-card,
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+    
+    .logo {
+      width: 182px;
+      height: 182px;
+    }
+    
+    .logo-section {
+      top: 1.5rem;
+    }
+    
+    .hero-content {
+      margin-top: 7.5rem;
     }
   }
 </style>
+

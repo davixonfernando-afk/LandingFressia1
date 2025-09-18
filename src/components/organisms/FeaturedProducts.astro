@@ -1,8 +1,5 @@
 ---
 import Button from "../../components/atoms/Button.astro";
-import headphone from "../../../public/assets/exported/headphone.png";
-import earphone from "../../../public/assets/exported/earphone.png";
-import speaker from "../../../public/assets/exported/speaker.png";
 import FeaturedProductCard from "../molecules/FeaturedProductCard.astro";
 ---
 
@@ -10,24 +7,28 @@ import FeaturedProductCard from "../molecules/FeaturedProductCard.astro";
   class="container flex flex-wrap justify-center xl:justify-between gap-8 featured-products-section"
 >
   <FeaturedProductCard
-    image={headphone}
-    imageAlt="headphone"
-    title="HEADPHONES"
+    image="/assets/perfumes/chanel-no5.jpg"
+    imageAlt="Chanel No. 5"
+    title="PERFUMES DE MUJER"
   >
-    <a href="/headphones"><Button>Shop</Button></a>
+    <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener"><Button>Ver Catálogo</Button></a>
   </FeaturedProductCard>
 
-  <FeaturedProductCard image={speaker} imageAlt="speakers" title="SPEAKERS">
-    <a href="/speakers"><Button>Shop</Button></a>
+  <FeaturedProductCard 
+    image="/assets/perfumes/black-opium.jpg" 
+    imageAlt="Black Opium YSL" 
+    title="PERFUMES DE HOMBRE"
+  >
+    <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener"><Button>Ver Catálogo</Button></a>
   </FeaturedProductCard>
 
   <FeaturedProductCard
     width="160px"
-    image={earphone}
-    imageAlt="earphone"
-    title="EARPHONES"
+    image="/assets/perfumes/arabic-perfume.jpg"
+    imageAlt="Perfumes Árabes"
+    title="PERFUMES ÁRABES"
   >
-    <a href="/earphones"><Button>Shop</Button></a>
+    <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener"><Button>Ver Catálogo</Button></a>
   </FeaturedProductCard>
 </div>
 

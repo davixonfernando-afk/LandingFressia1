@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import speaker from "../../../public/assets/exported/speaker.png";
 import { colors } from "../../design-system/colors";
 import Text from "../atoms/Text.astro";
 import Button from "../atoms/Button.astro";
@@ -10,7 +9,7 @@ import Button from "../atoms/Button.astro";
   <div class="product-spotlight-area">
     <div class="product-spotlight-1">
       <div class="flex justify-center">
-        <Image class="product-spotlight-1-img" src={speaker} alt="headphone" />
+        <Image class="product-spotlight-1-img" src="/assets/perfumes/chanel-no5.jpg" alt="Chanel No. 5" />
       </div>
       <div class="flex flex-col gap-4 items-center lg:items-start">
         <div class="w-[396px]">
@@ -19,7 +18,7 @@ import Button from "../atoms/Button.astro";
             type="h1"
             color={colors.white}
           >
-            ZX9 SPEAKER
+            CHANEL NO. 5
           </Text>
         </div>
         <div class="w-[349px]">
@@ -28,23 +27,22 @@ import Button from "../atoms/Button.astro";
             type="body"
             color={colors.white}
           >
-            Experience natural, lifelike audio and exceptional build quality
-            made for the passionate music enthusiast.
+            El perfume más icónico del mundo. Una fragancia atemporal que combina elegancia y sofisticación para la mujer moderna.
           </Text>
         </div>
-        <a href="/products/zx9-speaker"
+        <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener"
           ><Button className="mt-8" type="secondary-inverted">
-            SEE PRODUCT
+            VER CATÁLOGO
           </Button></a
         >
       </div>
     </div>
     <div class="product-spotlight-2">
       <div class="flex flex-col">
-        <Text type="h3">ZX7 SPEAKER</Text>
-        <a href="/products/zx7-speaker"
+        <Text type="h3">BLACK OPIUM YSL</Text>
+        <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener"
           ><Button className="mt-7" type="secondary-inverted">
-            SEE PRODUCT
+            VER CATÁLOGO
           </Button></a
         >
       </div>
@@ -52,9 +50,9 @@ import Button from "../atoms/Button.astro";
     <div class="product-spotlight-3">
       <div class="earphone-image"></div>
       <div class="flex flex-col">
-        <Text type="h3">YX1 EARPHONES</Text>
-        <a href="/earphones"
-          ><Button className="mt-7" type="secondary">SEE PRODUCT</Button></a
+        <Text type="h3">PERFUMES ÁRABES</Text>
+        <a href="https://fressia-perfumeria.kyte.site/es" target="_blank" rel="noopener"
+          ><Button className="mt-7" type="secondary">VER CATÁLOGO</Button></a
         >
       </div>
     </div>
@@ -80,8 +78,9 @@ import Button from "../atoms/Button.astro";
     width: 100%;
     height: 300px;
     border-radius: 8px;
-    background: url("/assets/exported/speaker-on-table-bg.png");
-    background-position-y: -750px;
+    background: url("/assets/perfumes/black-opium.jpg");
+    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
@@ -105,7 +104,7 @@ import Button from "../atoms/Button.astro";
     height: 300px;
   }
   .product-spotlight-3 div:first-child {
-    background: url("/assets/home/desktop/image-earphones-yx1.jpg");
+    background: url("/assets/perfumes/arabic-perfume.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
